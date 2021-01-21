@@ -1,0 +1,37 @@
+{% extends "main.twig" %}
+
+{% block title %}title{% endblock %}
+
+{% block content %}
+
+    {% for page in pages %}
+    <article class="entry">
+
+              <div class="entry-img">
+                <img src="{{ page.IntroImage }}" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="/blog/{{ page.FileName }}">{{ page.Title }}</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{{ page.Autor }}</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ page.Data }}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+                <p>
+                  {{ page.Intro }}
+                </p>
+                <div class="read-more">
+                  <a href="blog-single.html">Read More</a>
+                </div>
+              </div>
+
+            </article><!-- End blog entry -->
+    {% endfor %}
+{% endblock %}
