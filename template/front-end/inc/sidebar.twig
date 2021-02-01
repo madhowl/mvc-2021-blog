@@ -1,0 +1,26 @@
+<div class="sidebar">
+
+    <h3 class="sidebar-title">Категории:</h3>
+    <div class="sidebar-item categories">
+        <ul>
+            {% for category in categories  %}
+            <li><a href="/category/{{ category.id }}">{{ category.name }} <span>(кол-во статей)</span></a></li>
+            {% endfor %}
+
+        </ul>
+    </div><!-- End sidebar categories-->
+
+    <h3 class="sidebar-title">Последние публикации</h3>
+    <div class="sidebar-item recent-posts">
+        {% for lastpost in lastposts %}
+        <div class="post-item clearfix">
+            <img src="{{lastpost.image_url}}" alt="">
+            <h4><a href="blog/{{ lastpost.id }}">{{ lastpost.title }}</a></h4>
+            <time datetime="{{ lastpost.data }}">{{lastpost.data |date("d-m-Y") }}</time>
+        </div>
+        {% endfor %}
+
+    </div><!-- End sidebar recent posts-->
+
+
+</div><!-- End sidebar -->

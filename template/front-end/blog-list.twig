@@ -1,37 +1,38 @@
-{% extends "main.twig" %}
+{% extends "front-end/main.twig" %}
 
 {% block title %}title{% endblock %}
 
 {% block content %}
 
-    {% for page in pages %}
+    {% for article in articles %}
     <article class="entry">
 
               <div class="entry-img">
-                <img src="{{ page.IntroImage }}" alt="" class="img-fluid">
+                <img src="{{ article.image_url }}" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="/blog/{{ page.FileName }}">{{ page.Title }}</a>
+                <a href="/blog/{{ article.id }}">{{ article.title }}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{{ page.Autor }}</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ page.Data }}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">Василий пупкин{{ article.Autor }}</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01">{{ article.data |date("d-m-Y")  }}</time></a></li>
                   <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
                 </ul>
               </div>
 
               <div class="entry-content">
                 <p>
-                  {{ page.Intro }}
+                  {{ article.intro }}
                 </p>
                 <div class="read-more">
-                  <a href="blog-single.html">Read More</a>
+                  <a href="/blog/{{ article.id }}">Подробнее..</a>
                 </div>
               </div>
 
             </article><!-- End blog entry -->
     {% endfor %}
+    {% include ('front-end/inc/pagination.twig' ) %}
 {% endblock %}

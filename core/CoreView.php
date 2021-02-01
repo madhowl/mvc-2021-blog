@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\core;
+namespace Core;
 
 use Twig;
 
@@ -12,7 +12,7 @@ class CoreView
 
     public function __construct()
     {
-        $this->loader = new \Twig\Loader\FilesystemLoader('templates');
+        $this->loader = new \Twig\Loader\FilesystemLoader('template');
         $this->twig = new \Twig\Environment($this->loader, ['autoescape' => false]);
 
     }

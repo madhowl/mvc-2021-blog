@@ -6,7 +6,8 @@ require('vendor/autoload.php');
 
 use NoahBuscher\Macaw\Macaw;
 
-Macaw::get('/', 'Core\CoreController@index');
+Macaw::get('/', 'Controllers\BlogController@ShowAllArticles');
+Macaw::get('/blog/(:num)', 'Controllers\BlogController@ShowSingleArticle');
 
 
 Macaw::dispatch();
